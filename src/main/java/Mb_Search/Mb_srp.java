@@ -334,7 +334,7 @@ public class Mb_srp extends TestBase{
 	clickoutside.click();
 	
 	String heading= SRPheading.getText();
-	System.out.println("this is the heading text " + heading);
+	System.out.println("this is the heading text add in git  " + heading);
 	
 	if(heading.contains("2 BHK Flats in"))
 	{
