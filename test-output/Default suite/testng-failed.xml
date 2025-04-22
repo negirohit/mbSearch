@@ -3,14 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Mb_Search_Test.HomepageTest">
+      <class name="Mb_Search_Test.Mb_srp_Test">
         <methods>
-          <include name="prfeeredagentwidget"/>
           <include name="setup"/>
-          <include name="initilizebrowser"/>
-          <include name="closedriver"/>
+          <include name="searchnewkeyword"/>
         </methods>
-      </class> <!-- Mb_Search_Test.HomepageTest -->
+      </class> <!-- Mb_Search_Test.Mb_srp_Test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -69,6 +69,11 @@ public class TestBase {
 		driver.get(prop.getProperty("url"));
 		
 	}
+
+	public WebDriver getDriver() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
 	

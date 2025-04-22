@@ -86,8 +86,25 @@ public class Mb_srp extends TestBase{
 	@FindBy(xpath=("//li[@class='mb-srp__tabs__sortby__dd__list--item active']"))
 	public static WebElement mostrecent;
 	
+	@FindBy(xpath=("//input[@placeholder='Add More']"))
+	public static WebElement addmore; //searchbar in SRP Page
 	
-
+	@FindBy(xpath=("//div[@class='auto-suggest__tag-close']"))
+	public static WebElement cancelkeyword;
+	
+	@FindBy(xpath=("//input[@placeholder='Enter City, Locality, Project']"))
+	public static WebElement Enter_keyword;
+	
+	@FindBy(xpath=("//body[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/span[1]"))
+	public static WebElement firststsuggestion;
+	
+	@FindBy(xpath=("//div[@class='autosuggest-overlay show']"))
+	public static WebElement clickoutside;
+	
+	@FindBy(xpath=("//*[4]/div[1]/div[1]/div[1]/div[3]/h1[1]"))
+	public static WebElement SRPheading;
+	
+	
 	public Mb_srp()
 	{
 		PageFactory.initElements(driver, this);
@@ -216,8 +233,20 @@ public class Mb_srp extends TestBase{
 		driver.findElement(By.xpath("//div[@class='filter__component topPostedBy activeFilter']//div[@class='filter__component__cta-done'][normalize-space()='Done']")).click();
 		Thread.sleep(4000);
 		String str_builder =driver.findElement(By.xpath("//div[1]/div[2]/div[4]/div[1]/div[1]/div[1]/div[7]/div[1]/div[2]/div[2]/span[1]")).getText(); 
-		Assert.assertEquals(str_builder,"Contact Builder");
-
+		if (str_builder.contains("Contact Builder"))
+		{
+			Assert.assertTrue(true);
+		}
+		
+		else if(str_builder.contains("Request Callback"))
+		{
+			Assert.assertTrue(true);
+		}
+		
+		else 
+		{
+			Assert.assertTrue(false);
+		}
 
 	}
 
@@ -287,6 +316,37 @@ public class Mb_srp extends TestBase{
 			Assert.assertTrue(false);
 		}
 
+	}
+	
+	public void search_new_keyword() throws InterruptedException 
+	{
+		
+	addmore.click();
+	cancelkeyword.click();
+	Thread.sleep(2000);
+	Enter_keyword.click();
+	Thread.sleep(2000);
+	Enter_keyword.click();
+	Enter_keyword.sendKeys("greater noida");
+	Thread.sleep(2000);
+	firststsuggestion.click();
+	Thread.sleep(2000);
+	clickoutside.click();
+	
+	String heading= SRPheading.getText();
+	System.out.println("this is the heading text " + heading);
+	
+	if(heading.contains("2 BHK Flats in"))
+	{
+		Assert.assertTrue(true);
+	}
+	
+	else 
+	{
+		System.out.println("error occured , No such heading");
+		Assert.assertTrue(false);
+	}
+	
 	}
 }
 

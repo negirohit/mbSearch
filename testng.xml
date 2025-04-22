@@ -9,8 +9,7 @@
   <test thread-count="5" name="Test">
     <classes>
      <!--  <class name="Mb_Search_Test.Mb_ldp_test"/> -->
-     <!--> <class name="Mb_Search_Test.Mb_srp_Test"/> -->
-      <class name="Mb_Search_Test.HomepageTest"/>
+      <class name="Mb_Search_Test.Mb_srp_Test"/>
     <!--  <class name="Mb_Search_Test.HomepageTest"/> -->
     </classes>
   </test> <!-- Test -->
