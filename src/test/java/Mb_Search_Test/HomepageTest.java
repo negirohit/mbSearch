@@ -45,11 +45,12 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	}
 	
 	
-	//@Test(priority=1)
+	@Test(priority=1)
 	public void search_homepage() throws Exception
 	{
 		
 			homepage.search();
+			 homepage.srp_searchresultvalidation();
 						
 	}
 	
@@ -175,7 +176,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	
 	*/
 	
-	@Test(priority=10)
+	//@Test(priority=10)
 	public void prfeeredagentwidget() throws Exception
 	{
 		homepage.prfeeredagent();

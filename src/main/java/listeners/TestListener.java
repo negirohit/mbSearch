@@ -62,6 +62,13 @@ public class TestListener implements ITestListener {
     @Override
     public void onFinish(ITestContext context) {
         extent.flush();
+
+        // Send email
+        try {
+            utils.EmailSend.sendEmailWithReport("rohit.negi@magicbricks.com");
+        } catch (Exception e) {
+            System.err.println("Failed to send report email: " + e.getMessage());
+        }
     }
 
    /* public String captureScreenshot(WebDriver driver, String methodName) throws IOException {

@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -30,5 +31,31 @@ import mbsearch.base.TestBase;
 	        System.out.println("Title of the new window: " + driver.getTitle());
 	        driver.switchTo().window(mainWindowHandle);
 	    }
-	}
 	
+	
+    public static void tabswitchchild() throws InterruptedException
+    {
+        String mainWindowHandle = driver.getWindowHandle();
+        System.out.println(mainWindowHandle);
+        Set<String> allWindowHandles = driver.getWindowHandles();
+        Iterator<String> iterator = allWindowHandles.iterator();
+
+        while (iterator.hasNext())
+        {
+            String ChildWindow = iterator.next();
+            if (!mainWindowHandle.equalsIgnoreCase(ChildWindow))
+            {
+                driver.switchTo().window(ChildWindow);
+                Thread.sleep(2000);
+            }
+        }
+        
+		
+		//  ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+		//  driver.switchTo().window(tabs.get(1));
+		 
+    }
+	}
+
+    
+    

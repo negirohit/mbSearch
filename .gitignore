@@ -1,0 +1,24 @@
+# Ignore compiled class files
+*.class
+
+# Ignore build directory
+/target/
+
+# Ignore log files
+*.log
+
+# Ignore IntelliJ IDEA files
+.idea/
+*.iml
+
+# Ignore Eclipse files
+.project
+.classpath
+.settings/
+
+# Ignore sensitive config
+src/test/resources/config.properties
+
+# Ignore screenshots or reports
+test-output/screenshots/
+test-output/ExtentReport.html

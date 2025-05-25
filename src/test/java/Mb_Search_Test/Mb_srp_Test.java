@@ -48,7 +48,7 @@ public class Mb_srp_Test extends TestBase implements TestListener.WebDriverProvi
 
 	}
 
-	//	@Test(priority=1)
+		@Test(priority=1)
 	public void search_homepage() throws Exception
 	{
 
@@ -56,20 +56,21 @@ public class Mb_srp_Test extends TestBase implements TestListener.WebDriverProvi
 
 	}
 
-	//	@Test(priority=2)
+		@Test(priority=2)
 	public void srp_Page() throws Exception
 	{ 
+		
 		mbsrp.srp_searchresult();
 	}
 
 
-	//	@Test(priority=3)
+		@Test(priority=3)
 	public void srp_Pagefilter() throws Exception
 	{
 		mbsrp.postedbyowner();
 	}
 
-	//	@Test(priority=4)
+		@Test(priority=4)
 	public void scrolldownthepage() throws Exception
 	{
 
@@ -77,7 +78,7 @@ public class Mb_srp_Test extends TestBase implements TestListener.WebDriverProvi
 
 	}
 
-//	@Test(priority=1)
+	@Test(priority=1)
 	public void srp_allfilters() throws Exception
 	{
 		mbsrp.srp_filters();
@@ -129,7 +130,7 @@ public class Mb_srp_Test extends TestBase implements TestListener.WebDriverProvi
 	}
 
 
-	//	@Test(priority=2)
+		@Test(priority=2)
 	public void sortby_lowtohigh() throws Exception
 	{
 		mbsrp.test_lowtohigh();
@@ -152,7 +153,7 @@ public class Mb_srp_Test extends TestBase implements TestListener.WebDriverProvi
 
 	}
 
-	//@Test(priority=3)
+	@Test(priority=3)
 	public void sortby_hightolow() throws Exception
 	{
 		mbsrp.test_hightolow();
@@ -169,7 +170,7 @@ public class Mb_srp_Test extends TestBase implements TestListener.WebDriverProvi
 	}
 
 
-	//@Test(priority=4)
+	@Test(priority=4)
 	public void Sortbyrecent() throws Exception
 	{
 		mbsrp.test_sortmostrecent();
@@ -177,7 +178,7 @@ public class Mb_srp_Test extends TestBase implements TestListener.WebDriverProvi
 
 	}
 
-	//@AfterMethod
+	@AfterMethod
 	public void closedriver() 
 	{			
 		driver.quit();

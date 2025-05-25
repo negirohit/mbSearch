@@ -61,10 +61,12 @@ public class Homepage extends TestBase {
 	public static WebElement  commercial;
 	
 	
-	//@FindBy(xpath="//body/section[@id='searchFormHolderSection']/section[1]/div[1]/div[1]/div[3]/div[1]/div[3]/div[1]/div[3]/div[2]/span[1]")
-	//@FindBy(xpath="//div[contains(@class,'mb-search__location')]//div[2]//span[1]")
-	@FindBy(xpath="//div[normalize-space()='hyderabad']")	
-	public static WebElement  Auto_suggest;
+
+	//@FindBy(xpath="//div[normalize-space()='hyderabad']")	
+	/*
+	 * @FindBy(xpath="//div[@id='serachSuggest']//div[2]") public static WebElement
+	 * Auto_suggest;
+	 */
 	
 	//@FindAll({@FindBy(xpath="//body/section[@id='searchFormHolderSection']/section[1]/div[1]/div[1]/div[3]/div[4]")})
 	@FindBy(xpath="//div[@class='mb-search__btn']")
@@ -107,8 +109,8 @@ public class Homepage extends TestBase {
 	@FindBy(xpath="//div[@aria-label='4 / 8']//div[@class='mb-home__owner-prop__card--price']")
 	public static WebElement  popularownerpropertieswidget4;
 	
-	//@FindBy(xpath="//div[@aria-label='1 / 8']//div[@class='mb-home__agent__card card-shadow']//a//div[@class='mb-home__agent__card--content']//div[@class='mb-home__agent__card__topbluesec']//div[@class='mb-home__agent--name']//div//div[@class='mb-home__agent--pref'][normalize-space()='MB Preferred']")
-	@FindBy(xpath="//div[@aria-label='1 / 8']//span[@class='mb-home__agent--actbtn btn-red medium'][normalize-space()='View Properties']")	
+	@FindBy(xpath="(//div[@class='mb-home__agent--name'])[1]")
+	//@FindBy(xpath="//div[@aria-label='1 / 8']//span[@class='mb-home__agent--actbtn btn-red medium'][normalize-space()='View Properties']")	
 	public static WebElement prfeeredagentswidget;
 	
 	@FindBy(xpath="//div[@aria-label='1 / 8']//div[@class='mb-home__agent--actcard']")
@@ -225,6 +227,7 @@ public class Homepage extends TestBase {
 	
 	
 	
+	
 	public void search() throws Exception
 	{
 		System.out.println("in search");
@@ -234,13 +237,27 @@ public class Homepage extends TestBase {
 		Thread.sleep(2000);
 	//	Search_bar.sendKeys("hyderabad");
 		search_bar.sendKeys(prop.getProperty("city"));
-	//	WaitUtils.explicit_wait(driver, autosuggestelement);
+		WebElement Auto_suggest = driver.findElement(By.xpath("//div[@id='serachSuggest']//div[2]"));
+		By element =By.xpath("//div[@id='serachSuggest']//div[2]");
+		WaitUtils.explicit_wait(driver, element);
 		Auto_suggest.click();
 		Thread.sleep(2000);
 		System.out.println("element clicked");
 		Search_button.click();		
 		
 	}
+	
+	/*
+	 * public void search() throws Exception { System.out.println("in search");
+	 * cancel_searchkeyword.click(); Thread.sleep(2000); search_bar.click();
+	 * Thread.sleep(2000); // Search_bar.sendKeys("hyderabad");
+	 * search_bar.sendKeys(prop.getProperty("city")); //
+	 * WaitUtils.explicit_wait(driver, autosuggestelement); Auto_suggest.click();
+	 * Thread.sleep(2000); System.out.println("element clicked");
+	 * Search_button.click();
+	 * 
+	 * }
+	 */
 	
 	public static String defaultcity() 
 	{
@@ -319,10 +336,10 @@ public class Homepage extends TestBase {
 	public void prfeeredagent() throws InterruptedException
 	{
 		
-		/* WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	        Actions actions = new Actions(driver);
 
-	        // Locate the element that needs to be hovered over
+	        // hovered the preferrred agent 
 	     //   WebElement hoverElement = driver.findElement(By.id("hoverMenu"));
 
 	        // Perform hover action
@@ -334,8 +351,8 @@ public class Homepage extends TestBase {
 	        // Click the newly appeared element
 	        clickableElement.click();
 	        
-	       */
-		prfeeredagentswidget.click();
+	       
+		//prfeeredagentswidget.click();
 
 
 
@@ -486,9 +503,7 @@ public class Homepage extends TestBase {
 	
 	public void srp_searchresultvalidation() throws Exception
 	{
-	
-	
-	
+		
 	   String input= search_count.getText();
 	    String regex = "\\d+"; 
         Pattern pattern = Pattern.compile(regex); 

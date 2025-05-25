@@ -56,17 +56,14 @@ public class Mb_srp extends TestBase{
 	@FindBy(xpath="//div[@class='filter__component topPostedBy activeFilter']//div[@class='filter__component__cta-done'][normalize-space()='Done']")
 	public static WebElement doneCTA;
 
-
 	@FindAll({@FindBy(xpath="//*[@class='mb-srp__action--btn medium btn-red']")})
 	public static List <WebElement>  contactCTA;
-
 
 	@FindAll({@FindBy(xpath="//div[contains(@class,'mb-srp__card__info mb-srp__card__info-withoutburger')]")})
 	public static List <WebElement>  SRPcard;
 
 	@FindBy(xpath=("//div[contains(@class,'title-ellipsis')][normalize-space()='Top Localities']"))
 	public static WebElement toplocalities;
-
 
 	@FindBy(xpath=("//div[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]"))
 	public static WebElement property_rate; //propertyrate in srp card 
@@ -103,6 +100,8 @@ public class Mb_srp extends TestBase{
 	
 	@FindBy(xpath=("//*[4]/div[1]/div[1]/div[1]/div[3]/h1[1]"))
 	public static WebElement SRPheading;
+	
+	
 	
 	
 	public Mb_srp()
@@ -254,13 +253,31 @@ public class Mb_srp extends TestBase{
 	{
 		JavaScriptExecutorUtils.scrollbottom(driver);
 		int t = SRPcard.size();
+		Thread.sleep(3000);
+		// Re-fetch updated elements
+		List<WebElement> updatedCards = driver.findElements(
+		    By.xpath("//div[contains(@class,'mb-srp__card__info mb-srp__card__info-withoutburger')]"));
+
+		// Now you can use updatedCards.size(), etc.
+		System.out.println("Total cards after scroll: " + updatedCards.size());
+		
+		updatedCards.get(1).click();
+		Thread.sleep(2000);
+		updatedCards.get(2).click();
+		Thread.sleep(2000);
+		updatedCards.get(21).click();
+		Thread.sleep(2000);
+		updatedCards.get(31).click();
+		Thread.sleep(2000);
+		updatedCards.get(40).click();
+		
 		/*
 		 * System.out.println(t); SRPcard.get(1).click(); Thread.sleep(2000);
 		 * SRPcard.get(2).click(); Thread.sleep(2000); SRPcard.get(21).click();
 		 * Thread.sleep(2000); SRPcard.get(30).click(); Thread.sleep(2000);
+		 * 
+		 * SRPcard.get(40).click();
 		 */
-		Thread.sleep(3000);
-		SRPcard.get(40).click();
 
 	}
 
