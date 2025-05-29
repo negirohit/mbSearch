@@ -1,5 +1,6 @@
 package Mb_Search_Test;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -7,9 +8,10 @@ import Mb_Search.Homepage;
 import Mb_Search.Mb_ldp;
 import Mb_Search.Mb_srp;
 import Mb_Search.magichome_srp;
+import listeners.TestListener;
 import mbsearch.base.TestBase;
 
-public class magichomeSrp_Test extends TestBase {
+public class magichomeSrp_Test extends TestBase implements TestListener.WebDriverProvider  {
 	
 	Homepage homepage;
 	Mb_srp mbsrp;
@@ -21,7 +23,12 @@ public class magichomeSrp_Test extends TestBase {
 		super();
 	}
 	
-
+	@Override
+	public WebDriver getDriver() {
+	    return this.driver; // Method to to Implement Listener:
+	}
+	
+	
 	@BeforeMethod
 	public void setup() throws Exception {
 		
@@ -44,9 +51,9 @@ public class magichomeSrp_Test extends TestBase {
 		magicSrp.search();
 		magicSrp.Project_namevalidation();
 		magicSrp.Srpcard();
-		
-		
+				
 		
 	}
+
 
 }

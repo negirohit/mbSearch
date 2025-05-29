@@ -3,12 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Mb_Search_Test.magichomeSrp_Test">
+      <class name="Mb_Search_Test.MbSrp_RentTest">
         <methods>
-          <include name="magicSrp"/>
+          <include name="srp_Page"/>
+          <include name="sortby_lowtohigh"/>
+          <include name="srp_allfilters"/>
+          <include name="Sortbyrecent"/>
           <include name="setup"/>
+          <include name="sortby_hightolow"/>
+          <include name="closedriver"/>
         </methods>
-      </class> <!-- Mb_Search_Test.magichomeSrp_Test -->
+      </class> <!-- Mb_Search_Test.MbSrp_RentTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

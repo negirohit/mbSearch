@@ -54,7 +54,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 						
 	}
 	
-	/* // Search option in the menu
+	//Search option in the menu
 	@Test(priority=0)
 	public void defaultsearch_buy() throws Exception
 	{
@@ -105,10 +105,10 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	
 	}
 	//this is closed will here
-	*/
+	
 
-	/*
-	//@Test(priority=1)
+	
+	@Test(priority=1)
 		public void search_homepage1() throws Exception
 		{
 			
@@ -174,9 +174,9 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 		TabSwitch.tabswitch();
 	}
 	
-	*/
 	
-	//@Test(priority=10)
+	
+	@Test(priority=10)
 	public void prfeeredagentwidget() throws Exception
 	{
 		homepage.prfeeredagent();

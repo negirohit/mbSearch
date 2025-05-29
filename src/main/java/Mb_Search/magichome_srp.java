@@ -43,7 +43,7 @@ public class magichome_srp extends TestBase {
 	@FindBy(xpath=("//div[@class='pdp__name']"))
 	public static WebElement pdpName1;
 	
-	@FindBy(xpath=("(//div[contains(text(),'Bhk wise configuration')])[1]"))
+	@FindBy(xpath=("(//div[contains(text(),'Bhk wise configuration')])[2]"))
 	public static WebElement srpWidgetcard1;
 	
 	@FindBy(xpath=("(//div[contains(text(),'All Latest Reports from RERA')])[1]"))
@@ -116,8 +116,8 @@ public class magichome_srp extends TestBase {
 
 		driver.findElement(By.xpath("//div[@class='filterspop__cta']")).click();		
 		driver.findElement(By.xpath("//div[@class='mghome__filters__block bhk  ']")).click();
-	//	driver.findElement(By.xpath("//label[normalize-space()='3 BHK']")).click();
-	//	driver.findElement(By.xpath("//div[@class='filterspop__cta']")).click();
+		driver.findElement(By.xpath("//label[normalize-space()='3 BHK']")).click();
+		driver.findElement(By.xpath("//div[@class='filterspop__cta']")).click();
 		
 	}
 

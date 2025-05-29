@@ -175,12 +175,12 @@ public class Mb_ldp extends TestBase {
 			System.out.println("item is" +list_value.get(i).getText() );
 			if (list_value.get(i).getText()!= null && !list_value.get(i).getText().trim().isEmpty())
 			{
-				//Assert.assertTrue(true);
+				Assert.assertTrue(true);
 			}
 
 			else 
 			{
-				//Assert.assertTrue(false);
+				Assert.assertTrue(false);
 			}
 		}
 	}
@@ -356,7 +356,7 @@ public class Mb_ldp extends TestBase {
 		PageFactory.initElements(driver, this); 		
 		
 		String str3= pdpName.getText();
-		String projectName = str3.replaceAll("\\s*\\d+\\s+Reviews$", "").trim();
+		String projectName = str3.replaceAll("\\s*\\d+\\s+Reviews?\\s*(\\d+(\\.\\d+)?)?$", "").trim();
  
 		
 		System.out.println(str + "  "+ projectName);

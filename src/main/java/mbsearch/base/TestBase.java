@@ -9,6 +9,10 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.asserts.SoftAssert;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 
@@ -19,7 +23,8 @@ public class TestBase {
 	public static Properties prop;
 	public static Properties CONFIG;
 	public static String homeloan;
-	
+	public SoftAssert softAssert = new SoftAssert();
+	protected static final Logger logger = LogManager.getLogger(TestBase.class);
 	public TestBase() {
 		
 		try {
@@ -45,10 +50,13 @@ public class TestBase {
 
 		// Initialize WebDriver
 		 driver = new ChromeDriver();
+		 logger.info("Browser launched");
+	     
 
 		// Open a website
 	//	driver.get("https://www.magicbricks.com");
 		driver.manage().window().maximize();
+		logger.info("Window maximized");
 
 		try
 		{
@@ -66,6 +74,7 @@ public class TestBase {
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+		logger.info("Magicbricks website has been opened");
 		driver.get(prop.getProperty("url"));
 		
 	}

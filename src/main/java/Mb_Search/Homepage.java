@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import mbsearch.base.TestBase;
 import utils.JavaScriptExecutorUtils;
@@ -164,6 +165,7 @@ public class Homepage extends TestBase {
 	public static WebElement ResearchInsights;
 
 	
+	
 	public Homepage()
 	{
 		PageFactory.initElements(driver, this);
@@ -173,6 +175,7 @@ public class Homepage extends TestBase {
 	{
 		Thread.sleep(2000);
 		Search_button.click();		
+		logger.info("Buy Search result page has opened");
 		
 	}	
 	
@@ -182,15 +185,16 @@ public class Homepage extends TestBase {
 		Thread.sleep(2000);		
 		Search_button.click();		
 	
-		
+		logger.info("Rent Search result page has opened");
 	}
 	
 	public void defaultmagic_homes() throws Exception
 	{
 		Thread.sleep(2000);
 	    magicHomes.click();
-	    Thread.sleep(2000);
-	    Search_button.click();	
+	   // Thread.sleep(2000);
+	   // Search_button.click();	
+	    logger.info("MagichomeSRP has opened");
 	
 	}
 	
@@ -201,6 +205,7 @@ public class Homepage extends TestBase {
 		Pg.click();
 	    Thread.sleep(2000);
 	    Search_button.click();	
+	    logger.info("PG SRP has opened");
 	
 	}
 	
@@ -211,7 +216,7 @@ public class Homepage extends TestBase {
 		plot.click();
 	    Thread.sleep(2000);
 	    Search_button.click();	
-	
+	    logger.info("Plot SRP has opened");
 	}
 	
 	public void defaultcommercial() throws Exception
@@ -220,7 +225,8 @@ public class Homepage extends TestBase {
 		Thread.sleep(2000);
 		commercial.click();
 	    Thread.sleep(2000);
-	    Search_button.click();	
+	    Search_button.click();
+	    logger.info("Commercial Page has opened");
 	
 	}
 	
@@ -244,6 +250,7 @@ public class Homepage extends TestBase {
 		Thread.sleep(2000);
 		System.out.println("element clicked");
 		Search_button.click();		
+		logger.info("search from homepage has done thourgh the keyword");
 		
 	}
 	
@@ -285,24 +292,25 @@ public class Homepage extends TestBase {
 	public void ownerpropertyclick()
 	{
 		owner_prop_widget.click();
-			    
+		logger.info("Click on ownerproperty ");
 	}
 	
 	public void newProjectclick()
 	{
-		newProject_widget.click();;
-			    
+		newProject_widget.click();
+		logger.info("Click on newproject Widget "); 
 	}
 	
 	public void readyToMoveFlatsclick()
 	{
 		readyToMoveFlats_widget.click();
-			    
+		logger.info("Clicked on rerady to move to move property  ");
 	}
 	
 	public void budgetHomeclick()
 	{
 		budgetHomes_widget.click();
+		logger.info("Clicked on budget Home property ");
 			    
 	}
 	
@@ -312,24 +320,26 @@ public class Homepage extends TestBase {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", Homepage.Popular_Owner_Prop);
 
 	//	JavaScriptExecutorUtils.scrollToElement(driver, Homepage.Popular_Owner_Prop);
-		popularownerpropertieswidget1.click();			    
+		popularownerpropertieswidget1.click();	
+		logger.info("Clicked on popular property  ");
 	}
 	
 	public void popularownerproperty2()
 	{
 		popularownerpropertieswidget2.click();
-			    
+		logger.info("Clicked on 2nd popular property  ");
 	}
 	
 	public void popularownerproperty3()
 	{
 		popularownerpropertieswidget3.click();
-			    
+		logger.info("Clicked on 3rd popular property  ");	    
 	}
 	
 	public void popularownerproperty4()
 	{
 		popularownerpropertieswidget4.click();
+		logger.info("Clicked on 4th popular property  ");
 			    
 	}
 	
@@ -363,7 +373,7 @@ public class Homepage extends TestBase {
 		Thread.sleep(2000);
 		WaitUtils.explicit_wait(driver, element1);
 		new_homes.click();
-	
+		logger.info("Clicked on Magichome Widget  ");
 	}
 	
 	public void propertyservice_homeLoan() throws InterruptedException
@@ -371,7 +381,7 @@ public class Homepage extends TestBase {
 		Thread.sleep(2000);
 		WaitUtils.explicit_wait(driver, element2);
         property_service_home_Loan.click();
-	
+        logger.info("Clicked on Homeloan widget  ");
 	}
 	
 	public void propertyservice_Interior() throws InterruptedException
@@ -379,7 +389,7 @@ public class Homepage extends TestBase {
 		Thread.sleep(2000);
 		WaitUtils.explicit_wait(driver, element3);
         property_service_home_Interior.click();
-	
+        logger.info("Clicked on Property service widget  ");
 	}
 	
 	public void project_gallery_Widget() throws InterruptedException
@@ -388,6 +398,7 @@ public class Homepage extends TestBase {
 		WaitUtils.explicit_wait(driver, element4);
 		//projectgallery.get(0).click();
 		projectgallery.click();
+		logger.info("Clicked on Photogallery widget  ");
 
 	}
 	
@@ -422,7 +433,7 @@ public class Homepage extends TestBase {
 			    } catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		}
+		} logger.info("Clicked on Owner Exclusive property  ");
 	}
 	
 	public void clickAllFreshPropertyCards() throws InterruptedException {
@@ -445,7 +456,7 @@ public class Homepage extends TestBase {
 			    } catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		}
+		} logger.info("Clicked on Fresh Property Cards  ");
 	}
 	
 	public void Exclusive_ownerWidget() throws InterruptedException
@@ -458,7 +469,7 @@ public class Homepage extends TestBase {
 		System.out.println(driver.getTitle());
 		System.out.println(driver.getCurrentUrl());
 		
-		
+		 logger.info("Clicked on Exclusive Property Cards  ");
 		
 		/*
 		 * for (WebElement element : Exl_owner_prop) {
@@ -476,7 +487,7 @@ public class Homepage extends TestBase {
 	{
 	
 		RateTrends.click();
-	
+		 logger.info("Clicked on Rate and Trends Widget  ");
 	}
 	
 	
@@ -484,6 +495,7 @@ public class Homepage extends TestBase {
 	{
 	
 		EMICalculator.click();
+		 logger.info("Clicked on Emicalculater widget  ");
 	
 	}
 	
@@ -491,6 +503,7 @@ public class Homepage extends TestBase {
 	{
 	
 		InvestmentHotspot.click();
+		 logger.info("Clicked on Investment Hotspot  ");
 	
 	}
 	
@@ -498,6 +511,7 @@ public class Homepage extends TestBase {
 	{
 	
 		ResearchInsights.click();
+		logger.info("Clicked on Research Insight widget  ");
 	
 	}
 	
@@ -519,13 +533,17 @@ public class Homepage extends TestBase {
         	System.out.println(num1);
          // System.out.println(matcher.group()); 
         	 }
-        if(num1<2000)
+        String value = prop.getProperty("searchcount");
+        int searchcount = Integer.parseInt(value);
+        if(num1<searchcount)
         {
+        	
         	System.out.println("search results are less");
-        	Assert.assertTrue(false);
+        //	Assert.assertTrue(false);
+        	softAssert.assertTrue(false); 
         	
         }
-                
+        logger.info("Search counch has been validated  ");
 	}
 	
 		

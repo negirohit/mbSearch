@@ -8,8 +8,8 @@
     <classes>
       <class name="Mb_Search_Test.HomepageTest">
         <methods>
-          <include name="prfeeredagentwidget"/>
           <include name="setup"/>
+          <include name="defaultcommercial"/>
           <include name="initilizebrowser"/>
           <include name="closedriver"/>
         </methods>

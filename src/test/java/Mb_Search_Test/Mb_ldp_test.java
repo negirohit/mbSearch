@@ -3,6 +3,7 @@ package Mb_Search_Test;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -17,9 +18,10 @@ import Mb_Search.Homepage;
 import Mb_Search.Mb_ldp;
 import Mb_Search.Mb_srp;
 import listeners.RetryAnalyzer;
+import listeners.TestListener;
 import mbsearch.base.TestBase;
 
-public class Mb_ldp_test extends TestBase {
+public class Mb_ldp_test extends TestBase implements TestListener.WebDriverProvider {
 	
 	Homepage homepage;
 	Mb_srp mbsrp;
@@ -31,7 +33,11 @@ public class Mb_ldp_test extends TestBase {
 		super();
 	}
 	
-
+	@Override
+	public WebDriver getDriver() {
+	    return this.driver; // Method to to Implement Listener:
+	}
+	
 	@BeforeMethod
 	public void setup() throws Exception {
 		
