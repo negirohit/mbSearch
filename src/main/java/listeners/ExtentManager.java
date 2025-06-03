@@ -13,11 +13,12 @@ public class ExtentManager {
         	sparkReporter.config().setTheme(Theme.DARK);
         	sparkReporter.config().setDocumentTitle("Automation Report");
         	sparkReporter.config().setReportName("Search Module Test Report");
+        	sparkReporter.config().setEncoding("utf-8");
 
             extent = new ExtentReports();
             extent.attachReporter(sparkReporter);
             extent.setSystemInfo("Environment", "QA");
-            extent.setSystemInfo("Tester", "YourName");
+            extent.setSystemInfo("Tester", "QA Team");
         }
         return extent;
     }

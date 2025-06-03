@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -21,6 +22,7 @@ import listeners.RetryAnalyzer;
 import listeners.TestListener;
 import mbsearch.base.TestBase;
 
+@Listeners(TestListener.class)
 public class Mb_ldp_test extends TestBase implements TestListener.WebDriverProvider {
 	
 	Homepage homepage;
@@ -78,7 +80,7 @@ public class Mb_ldp_test extends TestBase implements TestListener.WebDriverProvi
 	
 	
 	
-	//@AfterMethod
+	@AfterMethod
 	public void closedriver() 
 	{			
 			driver.quit();

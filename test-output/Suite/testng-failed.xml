@@ -8,8 +8,8 @@
     <classes>
       <class name="Mb_Search_Test.HomepageTest">
         <methods>
+          <include name="defaultsearch_buy"/>
           <include name="setup"/>
-          <include name="defaultcommercial"/>
           <include name="initilizebrowser"/>
           <include name="closedriver"/>
         </methods>

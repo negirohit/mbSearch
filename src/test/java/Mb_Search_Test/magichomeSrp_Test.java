@@ -1,7 +1,9 @@
 package Mb_Search_Test;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Mb_Search.Homepage;
@@ -11,6 +13,7 @@ import Mb_Search.magichome_srp;
 import listeners.TestListener;
 import mbsearch.base.TestBase;
 
+@Listeners(TestListener.class)
 public class magichomeSrp_Test extends TestBase implements TestListener.WebDriverProvider  {
 	
 	Homepage homepage;
@@ -55,5 +58,10 @@ public class magichomeSrp_Test extends TestBase implements TestListener.WebDrive
 		
 	}
 
+	@AfterMethod
+	public void closedriver() 
+	{			
+			driver.quit();
+	}
 
 }

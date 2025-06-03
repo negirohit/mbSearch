@@ -272,7 +272,7 @@ public class Homepage extends TestBase {
 		return city;
 	}
 	
-	public static boolean firstWidget()
+	public boolean firstWidget()
 	{
 		String message=first_widget.getText();
 		boolean bln = false;

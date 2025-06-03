@@ -28,13 +28,18 @@
     </dependency>
     
     <!--   extent reporting -->
-    
-    <dependency>
-    <groupId>com.aventstack</groupId>
-    <artifactId>extentreports</artifactId>
-    <version>5.0.9</version> <!-- Check for latest version -->
-</dependency>
-    
+	    
+	<dependency>
+	    <groupId>com.aventstack</groupId>
+	    <artifactId>extentreports</artifactId>
+	    <version>5.0.9</version> <!-- Check for latest version -->
+	</dependency>
+	    
+	<dependency>
+	    <groupId>com.aventstack</groupId>
+	    <artifactId>extentreports-testng-adapter</artifactId>
+	    <version>1.2.2</version> <!-- or newer -->
+	</dependency>
 
   <!-- Apache Commons IO (for file handling) -->
   <dependency>

@@ -6,10 +6,10 @@
   </listeners>
 
   <test thread-count="5" name="Test">
-    <classes>
+     <classes>
       <class name="Mb_Search_Test.HomepageTest">
         <methods>
-        <include name="search_homepage"/>
+         <include name="defaultsearch_buy"/>
         <!--  <include name="defaultplot"/>-->
         <!--  <include name="defaultcommercial"/>-->
         </methods>

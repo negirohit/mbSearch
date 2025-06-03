@@ -29,7 +29,10 @@ public class TestListener implements ITestListener {
     public void onTestStart(ITestResult result) {
     	System.out.println("Test Listener Attached!");
 
-        test = extent.createTest(result.getMethod().getMethodName());
+    	String testName = result.getMethod().getMethodName();
+        String testDescription = result.getMethod().getDescription();
+
+        test = extent.createTest(testName, testDescription);
     }
 
     @Override

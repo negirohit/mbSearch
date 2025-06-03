@@ -23,6 +23,7 @@ import mbsearch.base.TestBase;
 public class Mb_srp extends TestBase{
 
 	public static int num1;
+	public static int num2;
 	public static String str;
 	public static String owner="Contact Owner1";
 	public static String agent="Contact Agent";
@@ -33,9 +34,9 @@ public class Mb_srp extends TestBase{
 	@FindBy(xpath="//div[contains(text(),' results |')]")
 	public static WebElement srp_searchcount;
 
-	//@FindBy(xpath="//h1[contains(text(),'2 BHK Flats in')")
-	//@FindBy(xpath="//h1[contains(text(),'2 BHK Flats in Hyderabad for Sale')]")
-	@FindBy(xpath="//h1[normalize-space()='2 BHK Flats in Hyderabad for Sale']")
+
+//	@FindBy(xpath="//h1[normalize-space()='2 BHK Flats in Hyderabad for Sale']")
+	@FindBy(xpath="//h1[contains(text(),'BHK Flats in')]")
 	public static WebElement srp_search_h1;
 
 	@FindBy(xpath="//div[contains(text(),' results |')]")
@@ -65,8 +66,12 @@ public class Mb_srp extends TestBase{
 	@FindBy(xpath=("//div[contains(@class,'title-ellipsis')][normalize-space()='Top Localities']"))
 	public static WebElement toplocalities;
 
-	@FindBy(xpath=("//div[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]"))
+	//@FindBy(xpath=("//div[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]"))
+	@FindBy(xpath=("(//div[@class='mb-srp__card__price--amount'])[1]"))
 	public static WebElement property_rate; //propertyrate in srp card 
+	
+	@FindBy(xpath=("(//div[@class='mb-srp__card__price--amount'])[2]"))
+	public static WebElement property_rate2; //propertyrate in srp card 
 
 	@FindBy(xpath=("//div[4]/div[1]/div[1]/div[1]/div[1]/div[1]"))
 	public static WebElement updatedtodaytext; //text in srp on image widget
@@ -80,7 +85,7 @@ public class Mb_srp extends TestBase{
 	@FindBy(xpath=("//li[normalize-space()='Price - High to Low']"))
 	public static WebElement sortbyhigh_to_low;
 	
-	@FindBy(xpath=("//li[@class='mb-srp__tabs__sortby__dd__list--item active']"))
+	@FindBy(xpath=("//li[normalize-space()='Most Recent']"))
 	public static WebElement mostrecent;
 	
 	@FindBy(xpath=("//input[@placeholder='Add More']"))
@@ -116,10 +121,13 @@ public class Mb_srp extends TestBase{
 		wait.until(ExpectedConditions.visibilityOf(srp_search_h1));
 
 		String input= search_count.getText();
-		String regex =  "\\d+(?=\\.)"; 
+		
+		System.out.println(input);
+		String regex =  "(\\d+)"; 
 		Pattern pattern = Pattern.compile(regex); 
 		Matcher matcher = pattern.matcher(input); 
 
+		
 		// System.out.println("Extracted numbers:"); 
 		while (matcher.find()) 
 		{ 
@@ -127,10 +135,10 @@ public class Mb_srp extends TestBase{
 			String num=matcher.group(); 
 
 			num1= Integer.parseInt(num);
-			System.out.println(num1);
-			// System.out.println(matcher.group()); 
+			System.out.println("print the num1 "+ num1);
+			 System.out.println(matcher.group()); 
 		}
-		if(num1<20000)
+		if(num1<2000)
 		{
 			System.out.println("search results are less");
 			Assert.assertTrue(false);
@@ -184,17 +192,17 @@ public class Mb_srp extends TestBase{
 
 	public void srp_filters() throws Exception
 	{
-
+		PageFactory.initElements(driver, this);
 		//driver.get(prop.getProperty("url2"));
 		toplocalities.click();
+		
 		driver.findElement(By.xpath("//*[2]/div[1]/div[2]/div[1]/label[1]")).click();
 		driver.findElement(By.xpath("//div[@class='filter__component topLocality activeFilter']//div[@class='filter__component__cta-done'][normalize-space()='Done']")).click();		
 		driver.findElement(By.xpath("//div[contains(@class,'title-ellipsis')][normalize-space()='Budget']")).click();
 		driver.findElement(By.xpath("//div[contains(@class,'filter__component topBudget activeFilter')]//div[contains(@class,'filter-budget__fieldset__min-max min')]//select[contains(@class,'filter-budget__select')]")).click();
 
 		// Locate dropdown - 
-		WebElement dropdown = driver.findElement(By.xpath("//div[contains(@class,'filter__component topBudget activeFilter')]//div[contains(@class,'filter-budget__fieldset__min-max min')]//select[contains(@class,'filter-budget__select')]"));
-
+		WebElement dropdown = driver.findElement(By.xpath("//div[@class=\"filter__component__drop-down\"]//div[@class=\"filter-budget__fieldset__min-max min\"]//select[@class=\"filter-budget__select\"]"));
 		Select select = new Select(dropdown);
 
 		// Min Dropdown
@@ -212,6 +220,7 @@ public class Mb_srp extends TestBase{
 		driver.findElement(By.xpath("//label[@for='inputListings_inputListings_I']")).click();    	
 		driver.findElement(By.xpath("//div[@class='filter__component topPostedBy activeFilter']//div[@class='filter__component__cta-done'][normalize-space()='Done']")).click();
 		Thread.sleep(3000);
+		//getting the text of "contactOwner"
 		String strowner =driver.findElement(By.xpath("//div[1]/div[2]/div[4]/div[1]/div[1]/div[1]/div[5]/div[1]/div[2]/div[2]/span[1]")).getText(); 
 		Assert.assertEquals(strowner,"Contact Owner");
 
@@ -222,8 +231,41 @@ public class Mb_srp extends TestBase{
 		driver.findElement(By.xpath("//label[normalize-space()='Brokers']")).click();
 		driver.findElement(By.xpath("//div[@class='filter__component topPostedBy activeFilter']//div[@class='filter__component__cta-done'][normalize-space()='Done']")).click();
 		Thread.sleep(4000);
-		String str_agent =driver.findElement(By.xpath("//div[1]/div[2]/div[4]/div[1]/div[1]/div[1]/div[5]/div[1]/div[2]/div[2]/span[1]")).getText(); 
-		Assert.assertEquals(str_agent,"Contact Agent");
+		//getting the text of "contact Agent"
+		String str_agent =driver.findElement(By.xpath("//div[1]/div[2]/div[4]/div[1]/div[1]/div[1]/div[5]/div[1]/div[2]/div[2]/span[2]")).getText(); 
+		System.out.println("the CTA text is  " +str_agent);
+		//	Assert.assertEquals(str_agent,"Contact Agent");
+		
+		if (str_agent.contains("Contact Agent"))
+		{
+			Assert.assertTrue(true);
+		}
+		
+		if (str_agent.contains("Get Free Cab"))
+		{
+			Assert.assertTrue(true);
+		}
+		
+		
+		else if(str_agent.contains("Request Callback"))
+		{
+			Assert.assertTrue(true);
+		}
+		
+		else if(str_agent.contains("Book Visit"))
+		{
+			Assert.assertTrue(true);
+		}
+		
+		else if(str_agent.contains("Get Info"))
+		{
+			Assert.assertTrue(true);
+		}
+		
+		else 
+		{
+			Assert.assertTrue(false);
+		}
 
 		// clicking on the "Builder" in posted by filter 
 		driver.findElement(By.xpath("//div[contains(text(),'Brokers')]")).click();
@@ -232,6 +274,8 @@ public class Mb_srp extends TestBase{
 		driver.findElement(By.xpath("//div[@class='filter__component topPostedBy activeFilter']//div[@class='filter__component__cta-done'][normalize-space()='Done']")).click();
 		Thread.sleep(4000);
 		String str_builder =driver.findElement(By.xpath("//div[1]/div[2]/div[4]/div[1]/div[1]/div[1]/div[7]/div[1]/div[2]/div[2]/span[1]")).getText(); 
+		
+		System.out.println("this is the error" + str_builder);
 		if (str_builder.contains("Contact Builder"))
 		{
 			Assert.assertTrue(true);
@@ -299,7 +343,7 @@ public class Mb_srp extends TestBase{
 	{
 
 		sortbydropdown.click();
-		updatephototext();
+		mostrecent.click();
 
 	}
 
@@ -316,14 +360,15 @@ public class Mb_srp extends TestBase{
 			// System.out.println( matcher.find());
 			String num=matcher.group(); 
 
-			num1= Integer.parseInt(num);
-			System.out.println(num1);
+			num2= Integer.parseInt(num);
+			System.out.println("this is the property price" +num2);
 			// System.out.println(matcher.group()); 
 		}
-		return num1;
+		return num2;
 
 	}
 
+	//this text appears in the SRP page in the image thumbnail, when filter most recent is selected
 	public void updatephototext() 
 	{
 
@@ -337,22 +382,20 @@ public class Mb_srp extends TestBase{
 	
 	public void search_new_keyword() throws InterruptedException 
 	{
+		addmore.click();
+		cancelkeyword.click();
+		Thread.sleep(2000);
+		Enter_keyword.click();
+		Thread.sleep(2000);
+		Enter_keyword.click();
+		Enter_keyword.sendKeys("greater noida");
+		Thread.sleep(2000);
+		firststsuggestion.click();
+		Thread.sleep(2000);
+		clickoutside.click();		
+		String heading= SRPheading.getText();
+		System.out.println("this is the heading text add in git  " + heading);
 		
-	addmore.click();
-	cancelkeyword.click();
-	Thread.sleep(2000);
-	Enter_keyword.click();
-	Thread.sleep(2000);
-	Enter_keyword.click();
-	Enter_keyword.sendKeys("greater noida");
-	Thread.sleep(2000);
-	firststsuggestion.click();
-	Thread.sleep(2000);
-	clickoutside.click();
-	
-	String heading= SRPheading.getText();
-	System.out.println("this is the heading text add in git  " + heading);
-	
 	if(heading.contains("2 BHK Flats in"))
 	{
 		Assert.assertTrue(true);

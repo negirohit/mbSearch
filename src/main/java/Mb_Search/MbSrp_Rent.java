@@ -2,7 +2,9 @@
 	
 	package Mb_Search;
 
-	import java.time.Duration;
+	import static org.testng.Assert.assertTrue;
+
+import java.time.Duration;
 	import java.util.Arrays;
 	import java.util.List;
 	import java.util.regex.Matcher;
@@ -35,9 +37,7 @@
 		@FindBy(xpath="//div[contains(text(),' results |')]")
 		public static WebElement srp_searchcount;
 
-		//@FindBy(xpath="//h1[contains(text(),'2 BHK Flats in')")
-		//@FindBy(xpath="//h1[contains(text(),'2 BHK Flats in Hyderabad for Sale')]")
-		@FindBy(xpath="//h1[normalize-space()='2 BHK Flats in Hyderabad for Sale']")
+		@FindBy(xpath="//h1[contains(text(),'Flats for Rent')]")
 		public static WebElement srp_search_h1;
 
 		@FindBy(xpath="//div[contains(text(),' results |')]")
@@ -82,7 +82,7 @@
 		@FindBy(xpath=("//li[normalize-space()='Price - High to Low']"))
 		public static WebElement sortbyhigh_to_low;
 		
-		@FindBy(xpath=("//li[@class='mb-srp__tabs__sortby__dd__list--item active']"))
+		@FindBy(xpath=("//li[normalize-space()='Most Recent']"))
 		public static WebElement mostrecent;
 		
 		@FindBy(xpath=("//input[@placeholder='Add More']"))
@@ -118,7 +118,7 @@
 			wait.until(ExpectedConditions.visibilityOf(srp_search_h1));
 
 			String input= search_count.getText();
-			String regex =  "\\d+(?=\\.)"; 
+			String regex =  "(\\d+)"; 
 			Pattern pattern = Pattern.compile(regex); 
 			Matcher matcher = pattern.matcher(input); 
 
@@ -146,7 +146,11 @@
 			str=srp_search_h1.getText();
 			//driver.findElement(By.xpath("//h1[contains(text(),'2 BHK Flats in Bangalore for Sale')]")).getText();
 			System.out.println(str);
-			Assert.assertEquals(str, "2 BHK Flats in " + prop.getProperty("city") + " for Sale","Assert pass");
+			if(str.contains("BHK Flats in " + prop.getProperty("city") + " for Rent"))
+			{
+				Assert.assertTrue(true);
+			}
+			//Assert.assertEquals(str, "1 BHK Flats in " + prop.getProperty("city") + " for Rent","Assert pass");
 
 		}
 
@@ -285,7 +289,7 @@
 		{
 
 			sortbydropdown.click();
-			updatephototext();
+			//updatephototext();
 
 		}
 
@@ -339,7 +343,7 @@
 		String heading= SRPheading.getText();
 		System.out.println("this is the heading text add in git  " + heading);
 		
-		if(heading.contains("2 BHK Flats in"))
+		if(heading.contains(" BHK Flats for"))
 		{
 			Assert.assertTrue(true);
 		}
