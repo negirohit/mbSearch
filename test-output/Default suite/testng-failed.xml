@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Mb_Search_Test.TopAgent_Test">
+      <class name="Mb_Search_Test.Homepage_search">
         <methods>
-          <include name="agentnamevalidation"/>
+          <include name="defaultsearch_buy"/>
           <include name="setup"/>
+          <include name="initilizebrowser"/>
         </methods>
-      </class> <!-- Mb_Search_Test.TopAgent_Test -->
+      </class> <!-- Mb_Search_Test.Homepage_search -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

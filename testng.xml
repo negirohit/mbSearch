@@ -7,15 +7,15 @@
 
   <test thread-count="5" name="Test">
      <classes>
-      <class name="Mb_Search_Test.HomepageTest">
+      
+    <class name="Mb_Search_Test.HomepageTest">
         <methods>
-         <include name="defaultsearch_buy"/>
-        <!--  <include name="defaultplot"/>-->
+        <include name="search_homepage"/>
+        
         <!--  <include name="defaultcommercial"/>-->
         </methods>
       </class>
-      <!-- <class name="Mb_Search_Test.Mb_ldp_test"/> -->
-      <!-- <class name="Mb_Search_Test.Mb_srp_Test"/> -->
+      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

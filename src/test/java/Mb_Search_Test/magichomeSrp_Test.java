@@ -58,7 +58,7 @@ public class magichomeSrp_Test extends TestBase implements TestListener.WebDrive
 		
 	}
 
-	@AfterMethod
+	//@AfterMethod
 	public void closedriver() 
 	{			
 			driver.quit();

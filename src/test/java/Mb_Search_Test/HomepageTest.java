@@ -40,7 +40,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	
 	@Override
 	public WebDriver getDriver() {
-	    return this.driver; // Method to to Implement Listener:
+	    return this.driver; // Method to Implement Listener:
 	}
 	
 	@BeforeMethod
@@ -52,7 +52,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	}
 	
 	
-	@Test(priority=1,description = "search through the keyword for buy")
+	@Test(priority=0,description = "search through the keyword for buy")
 	public void search_homepage() throws Exception
 	{		
 			 homepage.search();
@@ -61,15 +61,17 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	}
 	
 	//Search option in the menu
-	@Test(priority=0,description = "search through the keyword for buy")
+	@Test(priority=1,description = "search through the keyword for buy")
 	public void defaultsearch_buy() throws Exception
 	{
 		homepage.defaultsearch_buy();
         homepage.srp_searchresultvalidation();
+        driver.navigate().back();
+        homepage.homepage_back();
         logger.info("search from the Homepage for Buy Module");		
 	}
 	
-	@Test(priority=0, description = "search through the keyword for Rent")
+	@Test(priority=1, description = "search through the keyword for Rent")
 	public void defaultsearch_rent() throws Exception
 	{
 		
@@ -79,7 +81,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 			
 	}
 	
-	@Test(priority=1,description = "search through the keyword for MagichomeSRP")
+	@Test(priority=2,description = "search through the keyword for MagichomeSRP")
 	public void defaultmagichome() throws Exception
 	{
 		
@@ -89,14 +91,14 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 		logger.info("search from the Homepage for MagicHomeSRP");	
 	}
 	
-	@Test(priority=2, description = "search through the keyword for PG")
+	@Test(priority=3, description = "search through the keyword for PG")
 	public void defaultpg() throws Exception
 	{
 	homepage.defaultpg();
 	logger.info("search from the Homepage for PG");	
 	}
 	
-	@Test(priority=3,description = "search through the keyword for Plot")
+	@Test(priority=4,description = "search through the keyword for Plot")
 	public void defaultplot() throws Exception
 	{
 	homepage.defaultplot();
@@ -104,7 +106,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	logger.info("search from the Homepage for Plot");	
 	}
 	
-	@Test(priority=4, description = "search through the keyword for commercial")
+	@Test(priority=5, description = "search through the keyword for commercial")
 	public void defaultcommercial() throws Exception
 	{
 	homepage.defaultcommercial();
@@ -115,7 +117,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	
 
 	
-	@Test(priority=1)
+	@Test(priority=6)
 		public void search_homepage1() throws Exception
 		{
 			
@@ -124,7 +126,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 				
 		}
 	
-	@Test(priority=2, description = "owner property widget")
+	@Test(priority=7, description = "owner property widget")
 	public void ownerpropertywidget() throws Exception
 	{
 		logger.info("owner property widget");
@@ -133,7 +135,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 		logger.info("click on the owner  Widget in homepage");	
 	}
 	
-	@Test(priority=3)
+	@Test(priority=8)
 	public void newProjectwidget() throws Exception
 	{
 		homepage.newProjectclick();
@@ -141,7 +143,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 		logger.info("click on the New Project Widget in homepage");	
 	}
 	
-	@Test(priority=4)
+	@Test(priority=9)
 	public void readyToMoveFlatswidget() throws Exception
 	{
 		homepage.readyToMoveFlatsclick();
@@ -149,7 +151,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 		logger.info("click on the Ready to move Widget in homepage");	
 	}
 	
-	@Test(priority=5)
+	@Test(priority=10)
 	public void budgetHomewidget() throws Exception
 	{
 		homepage.budgetHomeclick();
@@ -157,7 +159,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 		logger.info("click on the Budget Home Widget in homepage");	
 	}
 	
-	@Test(priority=6)
+	@Test(priority=11)
 	public void popularownerwidget1() throws Exception
 	{		
 		homepage.popularownerproperty1();
@@ -166,21 +168,21 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	}
 	
 	
-	@Test(priority=7)
+	@Test(priority=12)
 	public void popularownerwidget2() throws Exception
 	{
 		homepage.popularownerproperty2();
 		TabSwitch.tabswitch();
 	}
 	
-	@Test(priority=8)
+	@Test(priority=13)
 	public void popularownerwidget3() throws Exception
 	{
 		homepage.popularownerproperty3();
 		TabSwitch.tabswitch();
 	}
 	
-	@Test(priority=9)
+	@Test(priority=14)
 	public void popularownerwidget4() throws Exception
 	{
 		homepage.popularownerproperty4();
@@ -198,7 +200,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	
 	
 	
-	@Test(priority=11)
+	@Test(priority=15)
 	public void magichometwidget() throws Exception
 	{
 		homepage.magichomes_widget();
@@ -206,7 +208,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 		logger.info("click on the MagicHome Widget in homepage");	
 	}
 	
-	@Test(priority=12)
+	@Test(priority=16)
 	public void propertyservice_homeLoanWidget() throws Exception
 	{
 		homepage.propertyservice_homeLoan();
@@ -214,7 +216,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 		logger.info("click on the Homeloan  Widget in homepage");	
 	}
 	
-	@Test(priority=13)
+	@Test(priority=17)
 	public void propertyservice_homeInterior() throws Exception
 	{
 		homepage.propertyservice_Interior();
@@ -297,7 +299,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	
 	
 	
-	@AfterMethod
+	//@AfterMethod
 	public void closedriver() 
 	{			
 			driver.quit();

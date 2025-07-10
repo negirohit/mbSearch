@@ -5,6 +5,7 @@ import javax.activation.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+import listeners.TestListener;
 import mbsearch.base.TestBase;
 
 import java.io.File;
@@ -18,7 +19,29 @@ public class EmailSend extends TestBase{
         final String password = "stsr ynyw wgdm idph";    // Use App Password if 2FA is on
 
         String subject = "Automation Test Report";
-        String bodyText = "Hi,\n\nLatest Search test report.\n\nThanks.";
+        
+       // String bodyText = "Hi,\n\nLatest Search test report.\n\nThanks.";
+		/*
+		 * String bodyText = "<h2>Test Execution Summary</h2>" +
+		 * "<p><strong>Total:</strong> 10</p><p><strong>Passed:</strong> 9</p><p><strong>Failed:</strong> 1</p>"
+		 * +
+		 * "<p><a href='file:///path-to-report/ExtentReport.html'>Click to open Extent Report</a></p>"
+		 * ;
+		 */
+        int total = TestListener.passedCount + TestListener.failedCount + TestListener.skippedCount;
+        String bodyText  = "<h2>Test Execution Summary</h2>" +
+                "<table border='1' cellpadding='5'>" +
+                "<tr><th>Total</th><th>Passed</th><th>Failed</th><th>Skipped</th></tr>" +
+                "<tr><td>" + total + "</td>" +
+                "<td style='color:green;'>" + TestListener.passedCount + "</td>" +
+                "<td style='color:red;'>" + TestListener.failedCount + "</td>" +
+                "<td style='color:orange;'>" + TestListener.skippedCount + "</td></tr>" +
+                "</table><br/>" +
+                "<p>Extent Report is attached with this email</p>";
+        
+   
+        		
+        		//"Hi,\n\nLatest Search test report.\n\nThanks.";
 
         // Set properties
         Properties props = new Properties();
@@ -43,7 +66,7 @@ public class EmailSend extends TestBase{
 
             // Email body
             MimeBodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText(bodyText);
+       messageBodyPart.setContent(bodyText, "text/html");
 
             // Attachment
             MimeBodyPart attachmentPart = new MimeBodyPart();

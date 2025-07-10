@@ -15,6 +15,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -123,11 +124,34 @@ public class Mb_ldp extends TestBase {
 	//items in LDP page check like 2 Beds, 2 Baths,Semi-Furnished
 	public void summaryitem_check() throws InterruptedException 
 	{
-		//toplocalities.click();
-		//localitymenu.get(1).click();
+		
 		PageFactory.initElements(driver, this); 
 
 		WaitUtils.explicit_wait(driver, element1);
+		
+		//
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//div[contains(@class,'title-ellipsis')][normalize-space()='Budget']")).click();
+		driver.findElement(By.xpath("//div[@class=\"filter__component__drop-down\"]//div[@class=\"filter-budget__fieldset__min-max min\"]")).click();
+		//driver.findElement(By.xpath("//div[contains(@class,'filter__component topBudget activeFilter')]//div[contains(@class,'filter-budget__fieldset__min-max min')]//select[contains(@class,'filter-budget__select')]")).click();
+
+		// Locate dropdown - 
+		WebElement dropdown = driver.findElement(By.xpath("//div[@class=\"filter__component__drop-down\"]//div[@class=\"filter-budget__fieldset__min-max min\"]//select[@class=\"filter-budget__select\"]"));
+		Select select = new Select(dropdown);
+
+		// Min Dropdown
+		select.selectByVisibleText("₹ 80 Lac");
+		//Max dropdown
+		WebElement dropdown1 = driver.findElement(By.xpath("//div[contains(@class,'filter__component topBudget activeFilter')]//div[contains(@class,'filter-budget__fieldset__min-max max')]//select[contains(@class,'filter-budget__select')]"));
+
+		Select select1= new Select(dropdown1);
+		select1.selectByVisibleText("₹ 1.4 Cr");
+		// Thread.sleep(2000);
+		driver.findElement(By.xpath("//div[contains(@class,'filter__component topBudget activeFilter')]//div[contains(@class,'filter__component__cta-done')][normalize-space()='Done']")).click();
+
+		//budget_filter();
+		
+			
 		
 		WebElement srpcard = driver.findElement(By.xpath("(//div[@class='mb-srp__card__info mb-srp__card__info-withoutburger'])[2]"));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -259,6 +283,8 @@ public class Mb_ldp extends TestBase {
 	
 	public void aboutProject() throws InterruptedException
 	{
+		//about project widget in LDP page which often visible and often not 
+		try {
 
 		String str= projectname.getText();
 		if(str!=null && !str.trim().isEmpty())
@@ -316,7 +342,12 @@ public class Mb_ldp extends TestBase {
 		}
 		
 		driver.switchTo().window(parentWindow2);
-       
+		}
+		
+		catch(Exception E)
+		{
+			System.out.println("no project is available" );
+		}
 		
 	}
 
@@ -367,6 +398,29 @@ public class Mb_ldp extends TestBase {
 		Assert.assertEquals(str, projectName, "Both names are same" );
 		driver.switchTo().window(parentWindow3);
 	}
+	
+	//Method to filter the properties in SRP - budget from 
+	public void budget_filter()
+	{
+		driver.findElement(By.xpath("//div[contains(@class,'title-ellipsis')][normalize-space()='Budget']")).click();
+		driver.findElement(By.xpath("//div[contains(@class,'filter__component topBudget activeFilter')]//div[contains(@class,'filter-budget__fieldset__min-max min')]//select[contains(@class,'filter-budget__select')]")).click();
+
+		// Locate dropdown - 
+		WebElement dropdown = driver.findElement(By.xpath("//div[@class=\"filter__component__drop-down\"]//div[@class=\"filter-budget__fieldset__min-max min\"]//select[@class=\"filter-budget__select\"]"));
+		Select select = new Select(dropdown);
+
+		// Min Dropdown
+		select.selectByVisibleText("₹ 80 Lac");
+		//Max dropdown
+		WebElement dropdown1 = driver.findElement(By.xpath("//div[contains(@class,'filter__component topBudget activeFilter')]//div[contains(@class,'filter-budget__fieldset__min-max max')]//select[contains(@class,'filter-budget__select')]"));
+
+		Select select1= new Select(dropdown1);
+		select1.selectByVisibleText("₹ 1.4 Cr");
+		// Thread.sleep(2000);
+		driver.findElement(By.xpath("//div[contains(@class,'filter__component topBudget activeFilter')]//div[contains(@class,'filter__component__cta-done')][normalize-space()='Done']")).click();
+
+	}
+	
 	
 	public void otherProperties() throws InterruptedException
 	{

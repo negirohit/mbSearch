@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -55,10 +56,10 @@ public class Mb_ldp_test extends TestBase implements TestListener.WebDriverProvi
 	//,retryAnalyzer = RetryAnalyzer.class
 	@Test(priority=1)
 	public void srp_cardwidget() throws Exception
-	{
-		
+	{		
 	
 		//mbsrp.srp_card();
+		PageFactory.initElements(driver, this); 
 		
 		mbldp.summaryitem_check();		
 		mbldp.list_valuecheck();
@@ -80,7 +81,7 @@ public class Mb_ldp_test extends TestBase implements TestListener.WebDriverProvi
 	
 	
 	
-	@AfterMethod
+	//@AfterMethod
 	public void closedriver() 
 	{			
 			driver.quit();

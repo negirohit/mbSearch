@@ -16,6 +16,10 @@ public class TestListener implements ITestListener {
 
     private static ExtentReports extent;
     private static ExtentTest test;
+    
+    public static int passedCount = 0;
+    public static int failedCount = 0;
+    public static int skippedCount = 0;
 
     @Override
     public void onStart(ITestContext context) {
@@ -37,6 +41,8 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
+    	
+    	 passedCount++;
         test.pass("Test passed");
     }
 
@@ -44,6 +50,8 @@ public class TestListener implements ITestListener {
     
     @Override
     public void onTestFailure(ITestResult result) {
+    	  failedCount++;
+    	  
         test.fail("Test failed: " + result.getThrowable());
 
         Object testInstance = result.getInstance();
@@ -55,6 +63,8 @@ public class TestListener implements ITestListener {
         } catch (IOException e) {
             test.warning("Could not attach screenshot: " + e.getMessage());
         }
+        
+        skippedCount++;
     }
 
     @Override
@@ -72,6 +82,11 @@ public class TestListener implements ITestListener {
         } catch (Exception e) {
             System.err.println("Failed to send report email: " + e.getMessage());
         }
+        
+        System.out.println("✅ Total: " + (passedCount + failedCount + skippedCount));
+        System.out.println("✅ Passed: " + passedCount);
+        System.out.println("❌ Failed: " + failedCount);
+        System.out.println("⚠️ Skipped: " + skippedCount);
     }
 
    /* public String captureScreenshot(WebDriver driver, String methodName) throws IOException {

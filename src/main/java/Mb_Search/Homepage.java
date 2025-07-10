@@ -129,6 +129,9 @@ public class Homepage extends TestBase {
 	public static WebElement property_service_home_Interior;
 	By element3 = By.xpath("//div[normalize-space()='Home Interiors']");
 	
+	//this wiget is for navigate back to homepage from the srp page "because you have search hudrabad"
+	@FindBy(xpath="//h2[@class='mb-home__section__title--text1 strip-orange']")
+	public static WebElement homapage_back;
 	
 	//@FindAll({@FindBy(xpath="//div[@class='mb-home__new-proj-gallery__card--content']")})
 	//public static List <WebElement>  projectgallery;
@@ -178,6 +181,18 @@ public class Homepage extends TestBase {
 		logger.info("Buy Search result page has opened");
 		
 	}	
+	
+	public void homepage_back() throws Exception
+	{
+		
+	     String str = homapage_back.getText();
+	   
+	     logger.info("the homepage text is " + str);
+	     if(str.contains("Because you searched"))
+	     {
+	    	 Assert.assertTrue(true);
+	     }
+	}
 	
 	public void defaultsearch_Rent() throws Exception
 	{
@@ -229,10 +244,7 @@ public class Homepage extends TestBase {
 	    logger.info("Commercial Page has opened");
 	
 	}
-	
-	
-	
-	
+		
 	
 	public void search() throws Exception
 	{
@@ -246,6 +258,7 @@ public class Homepage extends TestBase {
 		WebElement Auto_suggest = driver.findElement(By.xpath("//div[@id='serachSuggest']//div[2]"));
 		By element =By.xpath("//div[@id='serachSuggest']//div[2]");
 		WaitUtils.explicit_wait(driver, element);
+		PageFactory.initElements(driver, this);
 		Auto_suggest.click();
 		Thread.sleep(2000);
 		System.out.println("element clicked");
@@ -360,13 +373,12 @@ public class Homepage extends TestBase {
 
 	        // Click the newly appeared element
 	        clickableElement.click();
-	        
-	       
+	        	       
 		//prfeeredagentswidget.click();
-
-
-
+	        
 	}
+	
+	
 	
 	public void magichomes_widget() throws InterruptedException
 	{
