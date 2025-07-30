@@ -1,0 +1,63 @@
+pipeline {
+    agent any  // Runs on any available Jenkins agent
+    
+    tools {
+        maven 'M3'  // Maven must be pre-configured in Jenkins
+    }
+    
+    stages {
+        // Stage 1: Checkout code from Git
+        stage('Checkout') {
+            steps {
+                git branch: 'main', 
+                url: 'https://github.com/your-repo/selenium-maven-project.git'
+            }
+        }
+        
+        // Stage 2: Run TestNG tests
+        stage('Test') {
+            steps {
+                // Run tests using testng.xml (or specific test classes)
+                sh 'mvn clean test -Dsurefire.suiteXmlFiles=testng.xml'
+                
+                // Alternative: Run specific TestNG test classes
+                // sh 'mvn test -Dtest=LoginTests,CheckoutTests'
+            }
+        }
+        
+        // Stage 3: Process TestNG Reports
+        stage('Reports') {
+            steps {
+                // Publish TestNG results (Jenkins plugin required)
+                testng(
+                    pattern: '**/test-output/testng-results.xml', 
+                    escapeTestDescp: true,
+                    escapeExceptionMsg: true
+                )
+                
+                // Archive HTML reports (if using ReportNG/ExtentReports)
+                archiveArtifacts '**/test-output/**/*.html, **/surefire-reports/**/*.html'
+            }
+        }
+    }
+    
+    // Post-build actions (notifications, cleanup)
+    post {
+        always {
+            // Email notification
+            emailext (
+                subject: "TestNG Results - ${currentBuild.result?:'SUCCESS'}",
+                body: """
+                Test Suite: ${env.JOB_NAME} 
+                Build: ${env.BUILD_NUMBER}
+                Status: ${currentBuild.result?:'SUCCESS'}
+                Report: ${env.BUILD_URL}testReport/
+                """,
+                to: 'qa-team@example.com'
+            )
+            
+            // Clean workspace to save disk space
+            cleanWs()
+        }
+    }
+}

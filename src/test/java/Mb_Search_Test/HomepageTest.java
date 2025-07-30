@@ -251,7 +251,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	
 	
 	
-	//@Test(priority=16)
+	@Test(priority=16)
 	public void RateTrends() throws Exception
 	{
 		homepage.RateTrendsWidget();
@@ -259,7 +259,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 		
 	}
 
-	//@Test(priority=17)
+	@Test(priority=17)
 	public void EMICalculator() throws InterruptedException
 	{
 	
@@ -299,7 +299,7 @@ public class HomepageTest extends TestBase implements TestListener.WebDriverProv
 	
 	
 	
-	//@AfterMethod
+	@AfterMethod
 	public void closedriver() 
 	{			
 			driver.quit();

@@ -1,5 +1,7 @@
 package Mb_Search;
 
+import static org.testng.Assert.assertFalse;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -128,8 +130,7 @@ public class Mb_ldp extends TestBase {
 		PageFactory.initElements(driver, this); 
 
 		WaitUtils.explicit_wait(driver, element1);
-		
-		//
+				//
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//div[contains(@class,'title-ellipsis')][normalize-space()='Budget']")).click();
 		driver.findElement(By.xpath("//div[@class=\"filter__component__drop-down\"]//div[@class=\"filter-budget__fieldset__min-max min\"]")).click();
@@ -153,10 +154,12 @@ public class Mb_ldp extends TestBase {
 		
 			
 		
-		WebElement srpcard = driver.findElement(By.xpath("(//div[@class='mb-srp__card__info mb-srp__card__info-withoutburger'])[2]"));
+		//WebElement srpcard = driver.findElement(By.xpath("(//div[@class='mb-srp__card__info mb-srp__card__info-withoutburger'])[2]"));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(srpcard));
+		WebElement srpcard = wait.until(ExpectedConditions.visibilityOfElementLocated(
+		By.xpath("(//div[@class='mb-srp__card__info mb-srp__card__info-withoutburger'])[2]")));		
 		srpcard.click();
+		
 		TabSwitch.tabswitchchild(); 
 		//ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
 		//driver.switchTo().window(tabs.get(1));
@@ -189,10 +192,16 @@ public class Mb_ldp extends TestBase {
 	//items in LDP page check like Developer, Project, Transaction type, Status, Lifts, Furnished Status, Semi-Furnished
 	public void list_valuecheck() throws InterruptedException 
 	{
-		System.out.println("in Value check" );
-		Thread.sleep(2000);
-
+		
 		int listvaluesize=list_value.size();
+		System.out.println("size of the items" + listvaluesize);
+		if(listvaluesize==0)
+		{
+			Boolean noelement=false;
+			Assert.assertFalse(noelement);
+			
+		}
+		
 		System.out.println("in listvaluesize item" + listvaluesize );
 		for(int i=1; i<listvaluesize ;i++)
 		{

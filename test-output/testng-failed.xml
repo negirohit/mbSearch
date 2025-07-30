@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Mb_Search_Test.Homepage_search">
+      <class name="Mb_Search_Test.Mb_ldp_test">
         <methods>
-          <include name="defaultsearch_buy"/>
+          <include name="closedriver"/>
+          <include name="ldp_srp_cardwidget"/>
           <include name="setup"/>
-          <include name="initilizebrowser"/>
         </methods>
-      </class> <!-- Mb_Search_Test.Homepage_search -->
+      </class> <!-- Mb_Search_Test.Mb_ldp_test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

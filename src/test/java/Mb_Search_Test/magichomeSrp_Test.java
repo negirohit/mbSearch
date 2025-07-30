@@ -46,19 +46,47 @@ public class magichomeSrp_Test extends TestBase implements TestListener.WebDrive
 	}
 	 
 	
-	@Test(priority=1)
-	public void magicSrp() throws InterruptedException
+	//@Test(priority=0)
+	public void magicSr_searchcount() throws InterruptedException
 	{
 		magicSrp.searchcount();		
-		magicSrp.Project_namevalidation();
-		magicSrp.search();
-		magicSrp.Project_namevalidation();
-		magicSrp.Srpcard();
+		/*
+		 * magicSrp.Project_namevalidation(); magicSrp.search();
+		 * magicSrp.Project_namevalidation(); magicSrp.Srpcard();
+		 */
 				
 		
 	}
+	
+//	@Test(priority=1)
+	public void magicSrp_Project_namevalidation() throws InterruptedException
+	{
+		magicSrp.Project_namevalidation();
+		
+				
+		
+	}
+	
+	//@Test(priority=2)
+	public void magicSrpsearch() throws InterruptedException
+	{
+		magicSrp.search();
+		magicSrp.Project_namevalidation();
+		
+		
+	}
+	
+	@Test(priority=3)
+	public void magicSrp_Srpcard() throws InterruptedException
+	{
+		
+		magicSrp.Srpcard();
+		
+	}
+	
+	
 
-	//@AfterMethod
+	@AfterMethod
 	public void closedriver() 
 	{			
 			driver.quit();

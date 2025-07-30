@@ -16,7 +16,8 @@ public class EmailSend extends TestBase{
     	
     	
         final String fromEmail = "rohit.negi@magicbricks.com"; // Change to your Gmail
-        final String password = "stsr ynyw wgdm idph";    // Use App Password if 2FA is on
+        final String password = "";
+        	//	"stsr ynyw wgdm idph";    // Use App Password if 2FA is on
 
         String subject = "Automation Test Report";
         

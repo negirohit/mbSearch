@@ -54,34 +54,62 @@ public class Mb_ldp_test extends TestBase implements TestListener.WebDriverProvi
 	}
 	
 	//,retryAnalyzer = RetryAnalyzer.class
-	@Test(priority=1)
-	public void srp_cardwidget() throws Exception
+	//@Test(priority=1)
+	public void ldp_srp_cardwidget() throws Exception
 	{		
 	
 		//mbsrp.srp_card();
-		PageFactory.initElements(driver, this); 
+		//PageFactory.initElements(driver, this); 
 		
 		mbldp.summaryitem_check();		
+		
+	}
+	
+	@Test(priority=2)
+	public void ldp_countvaluecheck() throws Exception
+	{	
+		
 		mbldp.list_valuecheck();
+		
+	}
+		
+	//@Test(priority=3)
+	public void ldp_Moredetails_module() throws Exception
+	{
 		mbldp.more_details_module();
+		
+		
+	}
+	
+//	@Test(priority=4)
+	public void ldp_AboutProject() throws Exception
+	{
 		mbldp.aboutProject();		
+		
+	}
+	
+	//@Test(priority=4)
+	public void ldp_Amenities() throws Exception
+	{
 		mbldp.amenities();		
+		
+	}
+	
+	//@Test(priority=4)
+	public void ldp_hotspotwidget()throws Exception
+	{
 		mbldp.hotspot_widget();
+		
+	}
+	
+	//@Test(priority=4)
+	public void ldp_otherproperties() throws Exception
+	{
 		mbldp.otherProperties();
 	}
-		
-	//@Test(priority=2)
-	public void Homeinteriorwidget_widget() throws Exception
-	{
-		//mbldp.interior_CTA();
-		
-	}
 	
 	
-	
-	
-	
-	//@AfterMethod
+	@AfterMethod
 	public void closedriver() 
 	{			
 			driver.quit();

@@ -77,7 +77,7 @@ import listeners.RetryAnalyzer;
 		}
 		
 				
-		//@AfterMethod
+		@AfterMethod
 		public void closedriver() 
 		{			
 				driver.quit();

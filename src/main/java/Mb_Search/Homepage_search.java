@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -99,9 +100,49 @@ public class Homepage_search extends TestBase {
 	}
 	
 
+	public void search() throws Exception {
+	    int maxAttempts = 3;
+	    int attempts = 0;
+
+	    while (attempts < maxAttempts) {
+	        try {
+	            System.out.println("Attempt " + (attempts + 1));
+	            
+	            // Clear search (if any)
+	            WaitUtils.waitForClickable(driver, cancel_searchkeyword).click();
+	            
+	            // Enter search term
+	            WaitUtils.waitForClickable(driver, search_bar).click();
+	            search_bar.clear();
+	            search_bar.sendKeys(prop.getProperty("city"));
+	            
+	            // Select auto-suggestion
+	            By autoSuggestLocator = By.xpath("//div[@id='serachSuggest']//div[2]");
+	            WebElement Auto_suggest = WaitUtils.explicit_wait(driver, autoSuggestLocator);
+	            Auto_suggest.click();
+	            
+	            // Final search
+	            WaitUtils.waitForClickable(driver, Search_button).click();
+	            
+	            logger.info("Search successful");
+	            return; // Exit on success
+	        } 
+	        catch (StaleElementReferenceException e) {
+	            attempts++;
+	            System.out.println("Stale element, retrying...");
+	            PageFactory.initElements(driver, this); // Re-fetch elements
+	        }
+	    }
+	    throw new Exception("Search failed after " + maxAttempts + " attempts");
+	}
 		
-	public void search() throws Exception
+	public void search1() throws Exception
 	{
+		int maxAttempts = 3;
+	    int attempts = 0;
+
+	    while (attempts < maxAttempts) {
+	        try {
 		System.out.println("in search");
 		cancel_searchkeyword.click();
 		Thread.sleep(2000);
@@ -118,6 +159,13 @@ public class Homepage_search extends TestBase {
 		System.out.println("element clicked");
 		Search_button.click();		
 		logger.info("search from homepage has done thourgh the keyword");
+		break; 
+	        }
+	        catch (StaleElementReferenceException e) {
+	            attempts++;
+	            System.out.println("Stale element on attempt " + attempts + ", retrying...");
+	        }
+	    }
 		
 	}
 	

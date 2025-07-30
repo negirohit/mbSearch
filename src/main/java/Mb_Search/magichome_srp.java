@@ -1,5 +1,6 @@
 package Mb_Search;
 
+import java.time.Duration;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,7 +9,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import mbsearch.base.TestBase;
@@ -43,7 +46,8 @@ public class magichome_srp extends TestBase {
 	@FindBy(xpath=("//div[@class='pdp__name']"))
 	public static WebElement pdpName1;
 	
-	@FindBy(xpath=("(//div[contains(text(),'Bhk wise configuration')])[2]"))
+	//@FindBy(xpath=("(//div[contains(text(),'Bhk wise configuration')])[2]"))
+	@FindBy(xpath ="(//div[contains(text(),'All Latest Reports from RERA')])[3]")
 	public static WebElement srpWidgetcard1;
 	
 	@FindBy(xpath=("(//div[contains(text(),'All Latest Reports from RERA')])[1]"))
@@ -147,7 +151,8 @@ public class magichome_srp extends TestBase {
 			PageFactory.initElements(driver, this); 		
 			
 			String str= pdpName1.getText();
-			String projectName1  = str.replaceAll("\\s*\\d+\\s+Reviews?\\s*(\\d+(\\.\\d+)?)?$", "").trim();
+		//	String projectName1  = str.replaceAll("\\s*\\d+\\s+Reviews?\\s*(\\d+(\\.\\d+)?)?$", "").trim();
+			String projectName1 = str.replaceAll("(?s)\\s*Read\\s+Reviews\\s*\\d+(?:\\.\\d+)?\\s*$", "").trim();
 	 			
 			System.out.println("project name in SRP is " + projectname );
 			System.out.println("project name in PDP is " + projectName1 );
@@ -162,17 +167,24 @@ public class magichome_srp extends TestBase {
 			driver.switchTo().window(parentWindow);
 		}
 		
+		
+		
 		public void Srpcard() throws InterruptedException
 		{
 			String parentWindow = driver.getWindowHandle();
 			Thread.sleep(2000);
+			
 			WebElement element1 = srpWidgetcard1;
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element1);
 			Thread.sleep(500); // optional small wait
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		//	WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".mghome__linkblks__card__txt")));
+			//element.click();
 			element1.click();
 		//	srpWidgetcard1.click();
 			TabSwitch.tabswitchchild(); 
-						
+			
+			// contact button in locked rera page
 			unlocknow.click();
 			
 			rerapage();
@@ -194,10 +206,10 @@ public class magichome_srp extends TestBase {
 			Thread.sleep(3000);
 			
 			PageFactory.initElements(driver, this);
-			WebElement element = srpWidgetcard3;
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+			WebElement element2 = srpWidgetcard3;
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element2);
 			Thread.sleep(500); // optional small wait
-			element.click();
+			element2.click();
 
 			//srpWidgetcard3.click();
 			Thread.sleep(3000);
