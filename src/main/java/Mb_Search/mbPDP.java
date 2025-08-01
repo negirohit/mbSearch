@@ -47,7 +47,7 @@ public class mbPDP extends TestBase {
 	
 	
 	
-	public MbPDP()
+	public mbPDP()
 	{
 		PageFactory.initElements(driver, this);
 	}
