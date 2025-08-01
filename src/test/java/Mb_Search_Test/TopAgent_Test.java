@@ -10,8 +10,8 @@
 	import org.testng.annotations.Test;
 	import Mb_Search.Homepage;
     import Mb_Search.MbSrp_Rent;
-import Mb_Search.Top_Agent;
-import Mb_Search.Magichome_srp;
+    import Mb_Search.Top_Agent;
+    import Mb_Search.magichome_srp;
 	import mbsearch.base.TestBase;
 	import listeners.RetryAnalyzer;
 	import listeners.TestListener;

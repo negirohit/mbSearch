@@ -17,7 +17,7 @@ import org.testng.Assert;
 import mbsearch.base.TestBase;
 import utils.TabSwitch;
 
-public class Magichome_srp extends TestBase {
+public class magichome_srp extends TestBase {
 	
 	int projectcount;
 	
@@ -64,7 +64,7 @@ public class Magichome_srp extends TestBase {
 	public static WebElement Contacformtxt;
 	
 	
-	public Magichome_srp()
+	public magichome_srp()
 	{
 		PageFactory.initElements(driver, this);
 		

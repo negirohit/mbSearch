@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import Mb_Search.Homepage;
 import Mb_Search.Mb_ldp;
 import Mb_Search.Mb_srp;
-import Mb_Search.Magichome_srp;
+import Mb_Search.magichome_srp;
 import Mb_Search.MbPDP;
 import listeners.RetryAnalyzer;
 import listeners.TestListener;
@@ -17,17 +17,17 @@ import mbsearch.base.TestBase;
 
 
 @Listeners(TestListener.class)
-	public class MbPDP_Test extends TestBase implements TestListener.WebDriverProvider  {
+	public class mbPDP_Test extends TestBase implements TestListener.WebDriverProvider  {
 				
 			Homepage homepage;
 			//Mb_srp mbsrp;
 			//Mb_ldp mbldp;
-			Magichome_srp magicSrp;
+			magichome_srp magicSrp;
 			MbPDP  mbpdp;
 			
 			
 			
-			public MbPDP_Test()
+			public mbPDP_Test()
 			{
 				super();
 			}
@@ -44,7 +44,7 @@ import mbsearch.base.TestBase;
 				homepage = new Homepage();
 				//mbsrp = new  Mb_srp();
 				//mbldp = new  Mb_ldp();
-				magicSrp=  new  Magichome_srp();
+				magicSrp=  new  magichome_srp();
 				mbpdp=new MbPDP();
 				driver.get(prop.getProperty("magicsrp_url")); 
 				

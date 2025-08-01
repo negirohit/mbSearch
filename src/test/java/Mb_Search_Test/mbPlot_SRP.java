@@ -7,29 +7,28 @@
 	import org.testng.annotations.AfterMethod;
 	import org.testng.annotations.BeforeClass;
 	import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
-
+	import org.testng.annotations.Listeners;
+	import org.testng.annotations.Test;
 	import Mb_Search.Homepage;
 	import Mb_Search.Mb_srp;
-import Mb_Search.PlotSRP;
-import Mb_Search.Magichome_srp;
+	import Mb_Search.PlotSRP;
+	import Mb_Search.magichome_srp;
 	import mbsearch.base.TestBase;
 	import listeners.RetryAnalyzer;
 	import listeners.TestListener;
 
 	
 	@Listeners(TestListener.class)
-	public class MbPlot_SRP extends TestBase implements TestListener.WebDriverProvider 
+	public class mbPlot_SRP extends TestBase implements TestListener.WebDriverProvider 
 	{
 
 		Homepage homepage;
 		//Mb_srp mbsrp;
-		Magichome_srp magicSrp;
+		magichome_srp magicSrp;
 		PlotSRP plotsrp;
 
 
-		public MbPlot_SRP()
+		public mbPlot_SRP()
 		{
 			super();
 		}
