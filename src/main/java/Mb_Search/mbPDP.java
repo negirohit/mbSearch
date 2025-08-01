@@ -131,10 +131,10 @@ public class mbPDP extends TestBase {
 			{
 				Assert.assertTrue(false);
 			}
+	       }
+	
+	
 	}
-	
-	
-}
 		public void Contact_CTA()
 		{				
 			propContact_CTA.click();
@@ -160,9 +160,9 @@ public class mbPDP extends TestBase {
 			
 			
 			//Boolean xyz=driver.findElement(By.xpath("//div[@class='swiper-slide swiper-slide-active']//div[@class='pdp__marketExpt__card']")).isDisplayed();
-			/*
-			 * if(xyz==true) { softAssert.assertTrue(true); }
-			 */
+			
+			 // if(xyz==true) { softAssert.assertTrue(true); }
+			
 			
 		}
 		
