@@ -15,7 +15,7 @@ import org.testng.Assert;
 import mbsearch.base.TestBase;
 import utils.TabSwitch;
 
-public class MbPDP extends TestBase {
+public class mbPDP extends TestBase {
 	
 	@FindBy(xpath=("(//div[@class='mghome__prjblk__locname'])[1]"))
 	public static WebElement projectClick;
