@@ -64,7 +64,7 @@ public class Magichome_srp extends TestBase {
 	public static WebElement Contacformtxt;
 	
 	
-	public magichome_srp()
+	public Magichome_srp()
 	{
 		PageFactory.initElements(driver, this);
 		
