@@ -17,7 +17,7 @@ import org.testng.Assert;
 import mbsearch.base.TestBase;
 import utils.TabSwitch;
 
-public class magichome_srp extends TestBase {
+public class Magichome_srp extends TestBase {
 	
 	int projectcount;
 	

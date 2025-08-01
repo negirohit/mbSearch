@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import Mb_Search.Homepage;
 import Mb_Search.Mb_srp;
-import Mb_Search.magichome_srp;
+import Mb_Search.Magichome_srp;
 import mbsearch.base.TestBase;
 import listeners.RetryAnalyzer;
 import listeners.TestListener;
@@ -22,7 +22,7 @@ public class Mb_srp_Test extends TestBase implements TestListener.WebDriverProvi
 
 	Homepage homepage;
 	Mb_srp mbsrp;
-	magichome_srp magicSrp;
+	Magichome_srp magicSrp;
 
 
 	public Mb_srp_Test()

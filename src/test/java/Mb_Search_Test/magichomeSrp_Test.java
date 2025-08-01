@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import Mb_Search.Homepage;
 import Mb_Search.Mb_ldp;
 import Mb_Search.Mb_srp;
-import Mb_Search.magichome_srp;
+import Mb_Search.Magichome_srp;
 import listeners.TestListener;
 import mbsearch.base.TestBase;
 
@@ -19,7 +19,7 @@ public class MagichomeSrp_Test extends TestBase implements TestListener.WebDrive
 	Homepage homepage;
 	Mb_srp mbsrp;
 	Mb_ldp mbldp;
-	magichome_srp magicSrp;
+	Magichome_srp magicSrp;
 	
 	public MagichomeSrp_Test()
 	{
@@ -39,7 +39,7 @@ public class MagichomeSrp_Test extends TestBase implements TestListener.WebDrive
 		//homepage = new Homepage();
 		mbsrp = new  Mb_srp();
 		mbldp = new  Mb_ldp();
-		magicSrp=  new  magichome_srp();
+		magicSrp=  new  Magichome_srp();
 		driver.get(prop.getProperty("magicsrp_url")); 
 		
 		//homepage.search();		

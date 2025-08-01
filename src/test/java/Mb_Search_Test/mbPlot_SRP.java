@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 	import Mb_Search.Homepage;
 	import Mb_Search.Mb_srp;
 import Mb_Search.PlotSRP;
-import Mb_Search.magichome_srp;
+import Mb_Search.Magichome_srp;
 	import mbsearch.base.TestBase;
 	import listeners.RetryAnalyzer;
 	import listeners.TestListener;
@@ -25,7 +25,7 @@ import Mb_Search.magichome_srp;
 
 		Homepage homepage;
 		//Mb_srp mbsrp;
-		magichome_srp magicSrp;
+		Magichome_srp magicSrp;
 		PlotSRP plotsrp;
 
 

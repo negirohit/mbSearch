@@ -11,7 +11,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 	import Mb_Search.Homepage;
     import Mb_Search.MbSrp_Rent;
-	import Mb_Search.magichome_srp;
+	import Mb_Search.Magichome_srp;
 	import mbsearch.base.TestBase;
 	import listeners.RetryAnalyzer;
 	import listeners.TestListener;
@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 
 		Homepage homepage;
 		MbSrp_Rent mbsrpRent;
-		magichome_srp magicSrp;
+		Magichome_srp magicSrp;
 
 
 		public MbSrp_RentTest()
