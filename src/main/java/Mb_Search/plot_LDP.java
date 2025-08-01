@@ -1,5 +1,5 @@
 package Mb_Search;
 
-public class Plot_LDP {
+public class plot_LDP {
 
 }
