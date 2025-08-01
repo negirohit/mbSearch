@@ -14,14 +14,14 @@ import listeners.TestListener;
 import mbsearch.base.TestBase;
 
 @Listeners(TestListener.class)
-public class magichomeSrp_Test extends TestBase implements TestListener.WebDriverProvider  {
+public class MagichomeSrp_Test extends TestBase implements TestListener.WebDriverProvider  {
 	
 	Homepage homepage;
 	Mb_srp mbsrp;
 	Mb_ldp mbldp;
 	magichome_srp magicSrp;
 	
-	public magichomeSrp_Test()
+	public MagichomeSrp_Test()
 	{
 		super();
 	}

@@ -17,7 +17,7 @@ import mbsearch.base.TestBase;
 
 
 @Listeners(TestListener.class)
-	public class mbPDP_Test extends TestBase implements TestListener.WebDriverProvider  {
+	public class MbPDP_Test extends TestBase implements TestListener.WebDriverProvider  {
 				
 			Homepage homepage;
 			//Mb_srp mbsrp;
@@ -27,7 +27,7 @@ import mbsearch.base.TestBase;
 			
 			
 			
-			public mbPDP_Test()
+			public MbPDP_Test()
 			{
 				super();
 			}

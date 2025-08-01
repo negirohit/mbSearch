@@ -20,7 +20,7 @@ import Mb_Search.magichome_srp;
 
 	
 	@Listeners(TestListener.class)
-	public class mbPlot_SRP extends TestBase implements TestListener.WebDriverProvider 
+	public class MbPlot_SRP extends TestBase implements TestListener.WebDriverProvider 
 	{
 
 		Homepage homepage;
@@ -29,7 +29,7 @@ import Mb_Search.magichome_srp;
 		PlotSRP plotsrp;
 
 
-		public mbPlot_SRP()
+		public MbPlot_SRP()
 		{
 			super();
 		}

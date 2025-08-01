@@ -24,14 +24,14 @@ import listeners.TestListener;
 import mbsearch.base.TestBase;
 
 @Listeners(TestListener.class)
-public class Mb_ldp_test extends TestBase implements TestListener.WebDriverProvider {
+public class Mb_Ldp_Test extends TestBase implements TestListener.WebDriverProvider {
 	
 	Homepage homepage;
 	Mb_srp mbsrp;
 	Mb_ldp mbldp;
 	
 	
-	public Mb_ldp_test()
+	public Mb_Ldp_Test()
 	{
 		super();
 	}
