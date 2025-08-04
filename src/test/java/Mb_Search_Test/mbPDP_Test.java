@@ -10,7 +10,7 @@ import Mb_Search.Homepage;
 import Mb_Search.Mb_ldp;
 import Mb_Search.Mb_srp;
 import Mb_Search.magichome_srp;
-import Mb_Search.MbPDP;
+import Mb_Search.mbPDP;
 import listeners.RetryAnalyzer;
 import listeners.TestListener;
 import mbsearch.base.TestBase;
@@ -23,7 +23,7 @@ import mbsearch.base.TestBase;
 			//Mb_srp mbsrp;
 			//Mb_ldp mbldp;
 			magichome_srp magicSrp;
-			MbPDP  mbpdp;
+			mbPDP  mbpdp;
 			
 			
 			
@@ -45,7 +45,7 @@ import mbsearch.base.TestBase;
 				//mbsrp = new  Mb_srp();
 				//mbldp = new  Mb_ldp();
 				magicSrp=  new  magichome_srp();
-				mbpdp=new MbPDP();
+				mbpdp=new mbPDP();
 				driver.get(prop.getProperty("magicsrp_url")); 
 				
 				
