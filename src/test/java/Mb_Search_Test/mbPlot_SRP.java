@@ -19,7 +19,7 @@
 
 	
 	@Listeners(TestListener.class)
-	public class mbPlot_SRP extends TestBase implements TestListener.WebDriverProvider 
+	public class MbPlot_SRP extends TestBase implements TestListener.WebDriverProvider 
 	{
 
 		Homepage homepage;
