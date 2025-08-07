@@ -6,7 +6,7 @@
       <class name="Mb_Search_Test.MbSrp_RentTest"/>
       <class name="Mb_Search_Test.TopAgent_Test"/>
       <class name="Mb_Search_Test.Homepage_searchTest"/>
-      <class name="Mb_Search_Test.MbPlot_SRP"/>
+      
       <class name="Mb_Search_Test.MagichomeSrp_Test"/>
       <class name="Mb_Search_Test.Mb_Ldp_Test"/>
       <class name="Mb_Search_Test.MbPDP_Test"/>
